@@ -13,7 +13,7 @@ const services = [
     icon: Contact,
     title: 'Contact Lens Fitting',
     tagline: 'Precision Fit, Total Comfort',
-    body: 'Expert fitting across all lens types — daily, monthly, toric, and multifocal — with follow-up care to ensure lasting comfort.',
+    body: 'Expert fitting across all lens types, from daily and monthly to toric and multifocal, with follow-up care to ensure lasting comfort.',
     detail: ['Corneal mapping', 'Trial lens assessment', 'Dry eye evaluation', 'Wear schedule guidance'],
   },
   {
@@ -95,7 +95,7 @@ export default function Services() {
             fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
             color: '#6b6b6b', maxWidth: 440, margin: '0 auto', lineHeight: 1.65,
           }}>
-            From routine exams to specialised monitoring — every service delivered with precision and care.
+            From routine exams to specialised monitoring, every service delivered with precision and care.
           </p>
         </div>
 
@@ -110,6 +110,7 @@ export default function Services() {
             <div
               key={i}
               className={`fade-in delay-${i + 2}`}
+              onClick={scrollToContact}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               style={{
@@ -119,7 +120,7 @@ export default function Services() {
                 border: `1px solid ${hovered === i ? 'transparent' : 'rgba(184,150,90,0.15)'}`,
                 borderRadius: 4,
                 padding: '36px 30px',
-                cursor: 'default',
+                cursor: 'pointer',
                 transition: 'background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease',
                 transform: hovered === i ? 'translateY(-6px)' : 'translateY(0)',
                 boxShadow: hovered === i ? '0 24px 64px rgba(0,0,0,0.14)' : '0 2px 12px rgba(0,0,0,0.04)',

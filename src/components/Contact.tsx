@@ -4,7 +4,7 @@ import { MapPin, Phone, Clock, Send } from 'lucide-react';
 const contactInfo = [
   { icon: MapPin, label: 'Location', value: '14 Harley Street, London W1G 9PE' },
   { icon: Phone, label: 'Telephone', value: '+44 20 7946 0958' },
-  { icon: Clock, label: 'Hours', value: 'Mon–Fri 8:30–18:00 · Sat 9:00–14:00' },
+  { icon: Clock, label: 'Hours', value: 'Mon-Fri 8:30-18:00 / Sat 9:00-14:00' },
 ];
 
 export default function Contact() {
@@ -86,7 +86,7 @@ export default function Contact() {
             fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
             letterSpacing: '0.14em', textTransform: 'uppercase', color: '#d4b07a',
           }}>
-            Begin Your Journey
+            Get in Touch
           </div>
           <h2 style={{
             fontFamily: 'Cormorant Garamond, serif',
@@ -165,7 +165,7 @@ export default function Contact() {
               fontFamily: 'Cormorant Garamond, serif', fontSize: 18, fontWeight: 300,
               fontStyle: 'italic', color: 'rgba(245,240,232,0.45)', lineHeight: 1.6,
             }}>
-              "Your vision is our priority —<br />we give every patient the time they deserve."
+              "Your vision is our priority. We give every patient the time they deserve."
             </div>
           </div>
 
@@ -201,41 +201,22 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                  <div>
-                    <label style={{
-                      display: 'block', marginBottom: 7,
-                      fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
-                      letterSpacing: '0.08em', textTransform: 'uppercase',
-                      color: 'rgba(245,240,232,0.5)',
-                    }}>
-                      Full Name
-                    </label>
-                    <input
-                      name="name" value={form.name} onChange={handleChange}
-                      required placeholder="Jane Smith"
-                      style={inputStyle}
-                      onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                      onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{
-                      display: 'block', marginBottom: 7,
-                      fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
-                      letterSpacing: '0.08em', textTransform: 'uppercase',
-                      color: 'rgba(245,240,232,0.5)',
-                    }}>
-                      Phone
-                    </label>
-                    <input
-                      name="phone" value={form.phone} onChange={handleChange}
-                      placeholder="+44 7700 000000"
-                      style={inputStyle}
-                      onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                      onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
-                    />
-                  </div>
+                <div>
+                  <label style={{
+                    display: 'block', marginBottom: 7,
+                    fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
+                    letterSpacing: '0.08em', textTransform: 'uppercase',
+                    color: 'rgba(245,240,232,0.5)',
+                  }}>
+                    Name
+                  </label>
+                  <input
+                    name="name" value={form.name} onChange={handleChange}
+                    required placeholder="Jane Smith"
+                    style={inputStyle}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                  />
                 </div>
 
                 <div>
@@ -245,7 +226,7 @@ export default function Contact() {
                     letterSpacing: '0.08em', textTransform: 'uppercase',
                     color: 'rgba(245,240,232,0.5)',
                   }}>
-                    Email Address
+                    Email
                   </label>
                   <input
                     name="email" type="email" value={form.email} onChange={handleChange}
@@ -263,7 +244,25 @@ export default function Contact() {
                     letterSpacing: '0.08em', textTransform: 'uppercase',
                     color: 'rgba(245,240,232,0.5)',
                   }}>
-                    Notes (optional)
+                    Phone
+                  </label>
+                  <input
+                    name="phone" value={form.phone} onChange={handleChange}
+                    placeholder="+44 7700 000000"
+                    style={inputStyle}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block', marginBottom: 7,
+                    fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
+                    letterSpacing: '0.08em', textTransform: 'uppercase',
+                    color: 'rgba(245,240,232,0.5)',
+                  }}>
+                    Message
                   </label>
                   <textarea
                     name="message" value={form.message} onChange={handleChange}
@@ -301,7 +300,7 @@ export default function Contact() {
                       }} />
                       Sending...
                     </>
-                  ) : 'Request Appointment'}
+                  ) : 'Book Consultation'}
                 </button>
 
                 <p style={{

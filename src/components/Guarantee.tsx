@@ -1,35 +1,25 @@
 import { useEffect, useRef } from 'react';
-import { Microscope, Cpu, Smile, TreePine, Zap } from 'lucide-react';
+import { ShieldCheck, Crosshair, HeartHandshake } from 'lucide-react';
 
-const features = [
+const guarantees = [
   {
-    icon: Microscope,
-    title: 'Advanced Eye Exams',
-    body: 'Thorough, comprehensive examinations that go far beyond standard vision testing, covering retinal health, intraocular pressure, and more.',
+    icon: ShieldCheck,
+    title: 'Patient-First Care',
+    body: 'Your wellbeing drives every decision. We never rush consultations, never upsell unnecessary services, and always prioritise what is right for your eyes.',
   },
   {
-    icon: Cpu,
-    title: 'Precision Diagnostics',
-    body: 'State-of-the-art imaging and diagnostic tools deliver detailed insights, enabling early detection and accurate clinical decisions.',
+    icon: Crosshair,
+    title: 'Accurate Diagnosis',
+    body: 'We use proven clinical methods and advanced technology to ensure our assessments are thorough and precise. If something needs attention, we find it. If everything is healthy, we confirm it.',
   },
   {
-    icon: Smile,
-    title: 'Comfortable Experience',
-    body: 'Every touchpoint is designed with your ease in mind: calm surroundings, gentle techniques, and unhurried consultations.',
-  },
-  {
-    icon: TreePine,
-    title: 'Long-Term Eye Health',
-    body: 'We build an ongoing understanding of your ocular history, supporting prevention and continuity of care over time.',
-  },
-  {
-    icon: Zap,
-    title: 'Modern Equipment',
-    body: 'Our clinic is equipped with leading-edge optical technology, ensuring assessments that are both fast and highly accurate.',
+    icon: HeartHandshake,
+    title: 'Ongoing Support',
+    body: 'Your care does not end when you leave the clinic. We provide clear follow-up plans, recall reminders, and are available to answer questions between visits.',
   },
 ];
 
-export default function Features() {
+export default function Guarantee() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,7 +37,7 @@ export default function Features() {
 
   return (
     <section
-      id="features"
+      id="guarantee"
       ref={ref}
       style={{
         padding: '100px 32px',
@@ -55,11 +45,10 @@ export default function Features() {
         position: 'relative',
       }}
     >
-      {/* Background ornament */}
       <div style={{
-        position: 'absolute', top: '10%', right: '2%', width: 500, height: 500,
+        position: 'absolute', top: '10%', left: '-3%', width: 400, height: 400,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(184,150,90,0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(122,140,110,0.06) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -69,9 +58,9 @@ export default function Features() {
           <div style={{
             display: 'inline-block', marginBottom: 18,
             fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-            letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b8965a',
+            letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7a8c6e',
           }}>
-            Why Choose Us
+            Our Promise
           </div>
           <h2 style={{
             fontFamily: 'Cormorant Garamond, serif',
@@ -79,24 +68,24 @@ export default function Features() {
             fontWeight: 300, lineHeight: 1.15,
             color: '#2c2c2c', marginBottom: 18,
           }}>
-            Care Refined to<br />
-            <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Every Detail</em>
+            Care You Can<br />
+            <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Count On</em>
           </h2>
           <p style={{
             fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
             color: '#6b6b6b', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
           }}>
-            A practice built on precision, patience, and genuine commitment to the people we care for.
+            Three commitments that define how we practise, and what every patient can expect from us.
           </p>
         </div>
 
-        {/* Feature grid */}
+        {/* Guarantee cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: 28,
         }}>
-          {features.map(({ icon: Icon, title, body }, i) => (
+          {guarantees.map(({ icon: Icon, title, body }, i) => (
             <div
               key={i}
               className={`fade-in delay-${i + 2} card-lift`}
@@ -104,27 +93,26 @@ export default function Features() {
                 background: '#faf8f4',
                 border: '1px solid rgba(184,150,90,0.15)',
                 borderRadius: 4,
-                padding: '36px 32px',
+                padding: '40px 32px',
                 position: 'relative',
                 overflow: 'hidden',
               }}
             >
-              {/* corner accent */}
               <div style={{
                 position: 'absolute', top: 0, left: 0,
                 width: 3, height: 48,
-                background: 'linear-gradient(180deg, #b8965a, transparent)',
+                background: 'linear-gradient(180deg, #7a8c6e, transparent)',
                 borderRadius: '0 0 2px 0',
               }} />
 
               <div style={{
                 width: 48, height: 48, borderRadius: 4,
-                background: 'linear-gradient(135deg, rgba(184,150,90,0.12), rgba(184,150,90,0.05))',
-                border: '1px solid rgba(184,150,90,0.2)',
+                background: 'linear-gradient(135deg, rgba(122,140,110,0.12), rgba(122,140,110,0.05))',
+                border: '1px solid rgba(122,140,110,0.2)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 marginBottom: 22,
               }}>
-                <Icon size={20} color="#b8965a" strokeWidth={1.5} />
+                <Icon size={20} color="#7a8c6e" strokeWidth={1.5} />
               </div>
 
               <h3 style={{

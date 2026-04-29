@@ -1,4 +1,4 @@
-import { Eye } from 'lucide-react';
+import { Eye, MapPin, Phone, Clock } from 'lucide-react';
 
 export default function Footer() {
   const scrollToContact = (e: React.MouseEvent) => {
@@ -17,9 +17,9 @@ export default function Footer() {
           display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between',
           alignItems: 'flex-start', gap: 32, marginBottom: 40,
         }}>
-          {/* Brand */}
-          <div style={{ maxWidth: 280 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+          {/* Brand + contact info */}
+          <div style={{ maxWidth: 320 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%',
                 background: 'linear-gradient(135deg, #b8965a, #d4b07a)',
@@ -31,15 +31,38 @@ export default function Footer() {
                 fontFamily: 'Cormorant Garamond, serif', fontSize: 18, fontWeight: 500,
                 color: '#f5f0e8', letterSpacing: '0.02em',
               }}>
-                Lumière Eye
+                Lumiere Eye
               </span>
             </div>
-            <p style={{
-              fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
-              color: 'rgba(245,240,232,0.4)', lineHeight: 1.65,
-            }}>
-              Precision eye care delivered with warmth and clinical excellence.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <MapPin size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
+                <span style={{
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
+                  color: 'rgba(245,240,232,0.45)',
+                }}>
+                  14 Harley Street, London W1G 9PE
+                </span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Phone size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
+                <span style={{
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
+                  color: 'rgba(245,240,232,0.45)',
+                }}>
+                  +44 20 7946 0958
+                </span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Clock size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
+                <span style={{
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
+                  color: 'rgba(245,240,232,0.45)',
+                }}>
+                  Mon-Fri 8:30-18:00 / Sat 9:00-14:00
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Links */}
@@ -75,7 +98,7 @@ export default function Footer() {
               }}>
                 Clinic
               </div>
-              {['About', 'Features', 'Contact'].map(s => (
+              {['Features', 'FAQ', 'Contact'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`}
                   onClick={s === 'Contact' ? scrollToContact : undefined}
                   style={{
@@ -138,7 +161,7 @@ export default function Footer() {
             fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
             color: 'rgba(245,240,232,0.25)',
           }}>
-            © 2026 Lumière Eye Clinic. All rights reserved.
+            2026 Lumiere Eye Clinic. All rights reserved.
           </span>
           <div style={{ display: 'flex', gap: 24 }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (
