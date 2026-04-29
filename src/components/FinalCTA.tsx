@@ -49,11 +49,11 @@ export default function FinalCTA() {
       <div className="fade-in delay-1" style={{
         maxWidth: 640, margin: '0 auto', textAlign: 'center',
       }}>
-        <h2 style={{
+        <h2 className="shiny-text-light" style={{
           fontFamily: 'Cormorant Garamond, serif',
           fontSize: 'clamp(32px, 5vw, 48px)',
           fontWeight: 300, lineHeight: 1.15,
-          color: '#f5f0e8', marginBottom: 20,
+          marginBottom: 20,
         }}>
           Ready to Take the<br />
           <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Next Step?</em>

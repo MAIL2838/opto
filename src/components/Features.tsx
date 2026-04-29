@@ -73,11 +73,11 @@ export default function Features() {
           }}>
             Why Choose Us
           </div>
-          <h2 style={{
+          <h2 className="shiny-text" style={{
             fontFamily: 'Cormorant Garamond, serif',
             fontSize: 'clamp(34px, 5vw, 52px)',
             fontWeight: 300, lineHeight: 1.15,
-            color: '#2c2c2c', marginBottom: 18,
+            marginBottom: 18,
           }}>
             Care Refined to<br />
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Every Detail</em>

@@ -88,11 +88,11 @@ export default function Contact() {
           }}>
             Get in Touch
           </div>
-          <h2 style={{
+          <h2 className="shiny-text-light" style={{
             fontFamily: 'Cormorant Garamond, serif',
             fontSize: 'clamp(34px, 5vw, 52px)',
             fontWeight: 300, lineHeight: 1.15,
-            color: '#f5f0e8', marginBottom: 18,
+            marginBottom: 18,
           }}>
             Book Your<br />
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Consultation</em>

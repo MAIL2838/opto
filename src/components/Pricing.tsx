@@ -49,11 +49,11 @@ export default function Pricing() {
           }}>
             Transparent Pricing
           </div>
-          <h2 style={{
+          <h2 className="shiny-text" style={{
             fontFamily: 'Cormorant Garamond, serif',
             fontSize: 'clamp(34px, 5vw, 52px)',
             fontWeight: 300, lineHeight: 1.15,
-            color: '#2c2c2c', marginBottom: 18,
+            marginBottom: 18,
           }}>
             Consultation-Led<br />
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Care, Clearly Priced</em>
