@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -130,23 +129,6 @@ export default function Hero() {
           </a>
         </div>
 
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="fade-in delay-5"
-        style={{
-          position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
-        }}
-      >
-        <ChevronDown size={16} color="#b8965a" style={{ animation: 'bounce 2s infinite' }} />
-        <style>{`
-          @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-          }
-        `}</style>
       </div>
     </section>
   );
