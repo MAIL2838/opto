@@ -38,8 +38,8 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <MapPin size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
                 <span style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.45)',
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.65)',
                 }}>
                   14 Harley Street, London W1G 9PE
                 </span>
@@ -47,8 +47,8 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Phone size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
                 <span style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.45)',
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.65)',
                 }}>
                   +44 20 7946 0958
                 </span>
@@ -56,8 +56,8 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Clock size={13} color="rgba(184,150,90,0.6)" strokeWidth={1.5} />
                 <span style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.45)',
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.65)',
                 }}>
                   Mon-Fri 8:30-18:00 / Sat 9:00-14:00
                 </span>
@@ -78,8 +78,8 @@ export default function Footer() {
               {['Eye Exams', 'Contact Lenses', 'Vision Correction', 'Eye Health Monitoring'].map(s => (
                 <a key={s} href="#services" style={{
                   display: 'block', marginBottom: 9,
-                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.45)', textDecoration: 'none',
+                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.65)', textDecoration: 'none',
                   transition: 'color 0.2s',
                 }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'rgba(245,240,232,0.8)')}
@@ -103,8 +103,8 @@ export default function Footer() {
                   onClick={s === 'Contact' ? scrollToContact : undefined}
                   style={{
                     display: 'block', marginBottom: 9,
-                    fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
-                    color: 'rgba(245,240,232,0.45)', textDecoration: 'none',
+                    fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
+                    color: 'rgba(245,240,232,0.65)', textDecoration: 'none',
                     transition: 'color 0.2s',
                   }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'rgba(245,240,232,0.8)')}
@@ -158,16 +158,16 @@ export default function Footer() {
           display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 12,
         }}>
           <span style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-            color: 'rgba(245,240,232,0.25)',
+            fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+            color: 'rgba(245,240,232,0.45)',
           }}>
             2026 Lumiere Eye Clinic. All rights reserved.
           </span>
           <div style={{ display: 'flex', gap: 24 }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (
               <a key={l} href="#" style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                color: 'rgba(245,240,232,0.25)', textDecoration: 'none',
+                fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                color: 'rgba(245,240,232,0.45)', textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'rgba(245,240,232,0.5)')}

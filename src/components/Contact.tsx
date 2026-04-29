@@ -44,7 +44,7 @@ export default function Contact() {
     background: 'rgba(245,240,232,0.5)',
     border: '1px solid rgba(184,150,90,0.2)',
     borderRadius: 2, outline: 'none',
-    fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
+    fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
     color: '#2c2c2c',
     transition: 'border-color 0.25s, background 0.25s',
   };
@@ -98,8 +98,8 @@ export default function Contact() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Consultation</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 300,
-            color: 'rgba(245,240,232,0.55)', maxWidth: 420, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 400,
+            color: 'rgba(245,240,232,0.75)', maxWidth: 420, margin: '0 auto', lineHeight: 1.65,
           }}>
             We will be in touch within one business day to confirm your appointment.
           </p>
@@ -119,8 +119,8 @@ export default function Contact() {
               Visit the Clinic
             </h3>
             <p style={{
-              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-              color: 'rgba(245,240,232,0.5)', marginBottom: 40, lineHeight: 1.55,
+              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+              color: 'rgba(245,240,232,0.7)', marginBottom: 40, lineHeight: 1.55,
             }}>
               Our practice is situated in central London, accessible by public transport and with nearby parking.
             </p>
@@ -145,8 +145,8 @@ export default function Contact() {
                       {label}
                     </div>
                     <div style={{
-                      fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                      color: 'rgba(245,240,232,0.75)', lineHeight: 1.5,
+                      fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                      color: 'rgba(245,240,232,0.9)', lineHeight: 1.5,
                     }}>
                       {value}
                     </div>
@@ -163,7 +163,7 @@ export default function Contact() {
 
             <div style={{
               fontFamily: 'Cormorant Garamond, serif', fontSize: 18, fontWeight: 300,
-              fontStyle: 'italic', color: 'rgba(245,240,232,0.45)', lineHeight: 1.6,
+              fontStyle: 'italic', color: 'rgba(245,240,232,0.65)', lineHeight: 1.6,
             }}>
               "Your vision is our priority. We give every patient the time they deserve."
             </div>
@@ -193,8 +193,8 @@ export default function Contact() {
                   Request Received
                 </h3>
                 <p style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.55)', lineHeight: 1.6,
+                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.75)', lineHeight: 1.6,
                 }}>
                   Thank you for reaching out. A member of our team will confirm your appointment within one business day.
                 </p>
@@ -206,7 +206,7 @@ export default function Contact() {
                     display: 'block', marginBottom: 7,
                     fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
                     letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.5)',
+                    color: 'rgba(245,240,232,0.7)',
                   }}>
                     Name
                   </label>
@@ -224,7 +224,7 @@ export default function Contact() {
                     display: 'block', marginBottom: 7,
                     fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
                     letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.5)',
+                    color: 'rgba(245,240,232,0.7)',
                   }}>
                     Email
                   </label>
@@ -242,7 +242,7 @@ export default function Contact() {
                     display: 'block', marginBottom: 7,
                     fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
                     letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.5)',
+                    color: 'rgba(245,240,232,0.7)',
                   }}>
                     Phone
                   </label>
@@ -260,7 +260,7 @@ export default function Contact() {
                     display: 'block', marginBottom: 7,
                     fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400,
                     letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.5)',
+                    color: 'rgba(245,240,232,0.7)',
                   }}>
                     Message
                   </label>
@@ -304,8 +304,8 @@ export default function Contact() {
                 </button>
 
                 <p style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.35)', textAlign: 'center', lineHeight: 1.5,
+                  fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.55)', textAlign: 'center', lineHeight: 1.5,
                 }}>
                   Your information is kept strictly private and is never shared.
                 </p>

@@ -92,8 +92,8 @@ export default function Services() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Around You</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: '#6b6b6b', maxWidth: 440, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: '#4a4a4a', maxWidth: 440, margin: '0 auto', lineHeight: 1.65,
           }}>
             From routine exams to specialised monitoring, every service delivered with precision and care.
           </p>
@@ -167,8 +167,8 @@ export default function Services() {
               </h3>
 
               <p style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                color: hovered === i ? 'rgba(245,240,232,0.65)' : '#6b6b6b',
+                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                color: hovered === i ? 'rgba(245,240,232,0.85)' : '#4a4a4a',
                 lineHeight: 1.65, marginBottom: 24, transition: 'color 0.4s',
               }}>
                 {body}
@@ -178,8 +178,8 @@ export default function Services() {
                 {detail.map((item, j) => (
                   <li key={j} style={{
                     display: 'flex', alignItems: 'center', gap: 9,
-                    fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                    color: hovered === i ? 'rgba(245,240,232,0.5)' : '#8e8275',
+                    fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                    color: hovered === i ? 'rgba(245,240,232,0.7)' : '#5a5a5a',
                     marginBottom: j < detail.length - 1 ? 7 : 0,
                     transition: 'color 0.4s',
                   }}>

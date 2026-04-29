@@ -59,8 +59,8 @@ export default function Pricing() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Care, Clearly Priced</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: '#6b6b6b', maxWidth: 520, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: '#4a4a4a', maxWidth: 520, margin: '0 auto', lineHeight: 1.65,
           }}>
             We believe in straightforward pricing with no hidden costs. Your consultation determines exactly what you need, and we discuss all fees before proceeding.
           </p>
@@ -107,8 +107,8 @@ export default function Pricing() {
               How Pricing Works
             </h3>
             <p style={{
-              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-              color: '#6b6b6b', lineHeight: 1.65, marginBottom: 20,
+              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+              color: '#4a4a4a', lineHeight: 1.65, marginBottom: 20,
             }}>
               Every visit begins with a consultation. This allows us to understand your needs fully before recommending any services or treatments.
             </p>
@@ -121,7 +121,7 @@ export default function Pricing() {
               ].map((item, j) => (
                 <li key={j} style={{
                   display: 'flex', alignItems: 'center', gap: 9,
-                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
+                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
                   color: '#4a4a4a', marginBottom: j < 3 ? 8 : 0,
                 }}>
                   <div style={{
@@ -169,8 +169,8 @@ export default function Pricing() {
               What to Expect
             </h3>
             <p style={{
-              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-              color: '#6b6b6b', lineHeight: 1.65, marginBottom: 20,
+              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+              color: '#4a4a4a', lineHeight: 1.65, marginBottom: 20,
             }}>
               Your consultation is the foundation of your care. We take the time to listen, examine, and explain before any decisions are made.
             </p>
@@ -183,7 +183,7 @@ export default function Pricing() {
               ].map((item, j) => (
                 <li key={j} style={{
                   display: 'flex', alignItems: 'center', gap: 9,
-                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
+                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
                   color: '#4a4a4a', marginBottom: j < 3 ? 8 : 0,
                 }}>
                   <div style={{

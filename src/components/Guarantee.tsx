@@ -72,8 +72,8 @@ export default function Guarantee() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Count On</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: '#6b6b6b', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: '#4a4a4a', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
           }}>
             Three commitments that define how we practise, and what every patient can expect from us.
           </p>
@@ -122,8 +122,8 @@ export default function Guarantee() {
                 {title}
               </h3>
               <p style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                color: '#6b6b6b', lineHeight: 1.65,
+                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                color: '#4a4a4a', lineHeight: 1.65,
               }}>
                 {body}
               </p>

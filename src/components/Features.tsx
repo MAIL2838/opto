@@ -83,8 +83,8 @@ export default function Features() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Every Detail</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: '#6b6b6b', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: '#4a4a4a', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
           }}>
             A practice built on precision, patience, and genuine commitment to the people we care for.
           </p>
@@ -134,8 +134,8 @@ export default function Features() {
                 {title}
               </h3>
               <p style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                color: '#6b6b6b', lineHeight: 1.65,
+                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                color: '#4a4a4a', lineHeight: 1.65,
               }}>
                 {body}
               </p>

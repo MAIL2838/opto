@@ -59,8 +59,8 @@ export default function FinalCTA() {
           <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Next Step?</em>
         </h2>
         <p style={{
-          fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-          color: 'rgba(245,240,232,0.55)', maxWidth: 400, margin: '0 auto 36px', lineHeight: 1.65,
+          fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+          color: 'rgba(245,240,232,0.75)', maxWidth: 400, margin: '0 auto 36px', lineHeight: 1.65,
         }}>
           Book your consultation today and experience the difference thoughtful, patient-first eye care can make.
         </p>

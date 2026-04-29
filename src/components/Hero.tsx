@@ -60,26 +60,6 @@ export default function Hero() {
       }} />
 
       <div style={{ maxWidth: 820, width: '100%', textAlign: 'center', position: 'relative', zIndex: 2 }}>
-        {/* Eyebrow */}
-        <div
-          className="fade-in delay-1"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            marginBottom: 28, padding: '8px 20px',
-            background: 'rgba(184,150,90,0.1)',
-            border: '1px solid rgba(184,150,90,0.25)',
-            borderRadius: 40,
-          }}
-        >
-          <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#b8965a' }} />
-          <span style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-            letterSpacing: '0.12em', textTransform: 'uppercase', color: '#b8965a',
-          }}>
-            Premium Eye Care Clinic
-          </span>
-        </div>
-
         {/* Headline */}
         <h1
           className="fade-in delay-2 shiny-text"
@@ -101,9 +81,9 @@ export default function Hero() {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: 'clamp(15px, 2vw, 18px)',
-            fontWeight: 300,
+            fontWeight: 400,
             lineHeight: 1.7,
-            color: '#6b6b6b',
+            color: '#4a4a4a',
             maxWidth: 560,
             margin: '0 auto 44px',
           }}
@@ -150,36 +130,16 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Trust indicators */}
-        <div
-          className="fade-in delay-5"
-          style={{
-            marginTop: 60,
-            display: 'flex', gap: 40, justifyContent: 'center', flexWrap: 'wrap',
-          }}
-        >
-          {['Precision Diagnostics', 'Comfortable Experience', 'Long-Term Care'].map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#b8965a', flexShrink: 0 }} />
-              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: '#8e8275', letterSpacing: '0.05em' }}>
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Scroll indicator */}
       <div
-        className="fade-in delay-6"
+        className="fade-in delay-5"
         style={{
           position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
         }}
       >
-        <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#b5aea5' }}>
-          Discover
-        </span>
         <ChevronDown size={16} color="#b8965a" style={{ animation: 'bounce 2s infinite' }} />
         <style>{`
           @keyframes bounce {

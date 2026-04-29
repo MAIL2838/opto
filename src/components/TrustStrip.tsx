@@ -74,8 +74,8 @@ export default function TrustStrip() {
                   {label}
                 </div>
                 <div style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 300,
-                  color: 'rgba(245,240,232,0.55)', lineHeight: 1.55,
+                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
+                  color: 'rgba(245,240,232,0.8)', lineHeight: 1.55,
                 }}>
                   {desc}
                 </div>

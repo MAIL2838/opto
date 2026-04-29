@@ -83,8 +83,8 @@ export default function Authority() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>You Can Trust</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: 'rgba(245,240,232,0.55)', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: 'rgba(245,240,232,0.75)', maxWidth: 480, margin: '0 auto', lineHeight: 1.65,
           }}>
             Our practice is built on a foundation of clinical rigour, genuine care, and a commitment to getting it right for every patient.
           </p>
@@ -133,8 +133,8 @@ export default function Authority() {
                 {title}
               </h3>
               <p style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                color: 'rgba(245,240,232,0.6)', lineHeight: 1.65,
+                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                color: 'rgba(245,240,232,0.8)', lineHeight: 1.65,
               }}>
                 {body}
               </p>

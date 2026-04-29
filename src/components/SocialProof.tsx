@@ -118,8 +118,8 @@ export default function SocialProof() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Real Results</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 300,
-            color: '#6b6b6b', maxWidth: 460, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            color: '#4a4a4a', maxWidth: 460, margin: '0 auto', lineHeight: 1.65,
           }}>
             Every patient who walks through our doors has a unique story. Here is what changes when vision care is done right.
           </p>
@@ -173,13 +173,13 @@ export default function SocialProof() {
                 <div style={{
                   fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
                   letterSpacing: '0.08em', textTransform: 'uppercase',
-                  color: '#8e8275', marginBottom: 6,
+                  color: '#5a5a5a', marginBottom: 6,
                 }}>
                   Before
                 </div>
                 <p style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
-                  color: '#6b6b6b', lineHeight: 1.6,
+                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+                  color: '#4a4a4a', lineHeight: 1.6,
                 }}>
                   {before}
                 </p>
@@ -200,7 +200,7 @@ export default function SocialProof() {
                   After
                 </div>
                 <p style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 300,
+                  fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
                   color: '#2c2c2c', lineHeight: 1.6,
                 }}>
                   {after}
@@ -255,8 +255,8 @@ export default function SocialProof() {
                     {t.name}
                   </div>
                   <div style={{
-                    fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 300,
-                    color: 'rgba(245,240,232,0.5)',
+                    fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
+                    color: 'rgba(245,240,232,0.7)',
                   }}>
                     {t.detail}
                   </div>
