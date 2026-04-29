@@ -30,10 +30,11 @@ export default function Hero() {
         position: 'relative',
         overflow: 'hidden',
         background: `
-          radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,176,122,0.18) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 50% at 80% 80%, rgba(122,140,110,0.12) 0%, transparent 60%),
-          radial-gradient(ellipse 50% 40% at 10% 70%, rgba(184,150,90,0.1) 0%, transparent 55%),
-          linear-gradient(170deg, #f5f0e8 0%, #faf8f4 40%, #ede7d9 100%)
+          radial-gradient(ellipse 90% 70% at 50% 10%, rgba(212,176,122,0.22) 0%, transparent 65%),
+          radial-gradient(ellipse 50% 40% at 85% 75%, rgba(122,140,110,0.1) 0%, transparent 55%),
+          radial-gradient(ellipse 45% 35% at 10% 65%, rgba(184,150,90,0.12) 0%, transparent 50%),
+          radial-gradient(ellipse 120% 80% at 50% 50%, rgba(250,248,244,0) 40%, rgba(237,231,217,0.5) 100%),
+          linear-gradient(175deg, #f5f0e8 0%, #faf8f4 35%, #f2ece0 65%, #ede7d9 100%)
         `,
         padding: '120px 32px 80px',
       }}
