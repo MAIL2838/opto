@@ -83,8 +83,8 @@ export default function FAQ() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Answered</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
-            color: '#4a4a4a', maxWidth: 440, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+            color: '#3a3a3a', maxWidth: 440, margin: '0 auto', lineHeight: 1.7,
           }}>
             Clear, straightforward answers to the questions we hear most often.
           </p>
@@ -148,7 +148,7 @@ export default function FAQ() {
                   <div style={{
                     padding: '0 24px 20px',
                     fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-                    color: '#4a4a4a', lineHeight: 1.7,
+                    color: '#3a3a3a', lineHeight: 1.7,
                   }}>
                     {faq.answer}
                   </div>

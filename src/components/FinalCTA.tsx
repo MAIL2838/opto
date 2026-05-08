@@ -51,16 +51,16 @@ export default function FinalCTA() {
       }}>
         <h2 className="shiny-text-light" style={{
           fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(32px, 5vw, 48px)',
-          fontWeight: 300, lineHeight: 1.15,
+          fontSize: 'clamp(34px, 5vw, 54px)',
+          fontWeight: 400, lineHeight: 1.12,
           marginBottom: 20,
         }}>
           Ready to Take the<br />
-          <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Next Step?</em>
+          <em style={{ fontStyle: 'italic', fontWeight: 300 }}>Next Step?</em>
         </h2>
         <p style={{
-          fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
-          color: 'rgba(245,240,232,0.75)', maxWidth: 400, margin: '0 auto 36px', lineHeight: 1.65,
+          fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+          color: 'rgba(245,240,232,0.9)', maxWidth: 420, margin: '0 auto 40px', lineHeight: 1.72,
         }}>
           Book your consultation today and experience the difference thoughtful, patient-first eye care can make.
         </p>

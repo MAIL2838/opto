@@ -34,6 +34,8 @@ body {
   background-color: var(--warm-white);
   color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 h1, h2, h3, h4 {
@@ -103,6 +105,28 @@ h1, h2, h3, h4 {
   transform: translateY(-6px);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.09);
   border-color: rgba(184, 150, 90, 0.45) !important;
+}
+
+/* Slide-in from left */
+.slide-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide-in from right */
+.slide-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 ::-webkit-scrollbar { width: 5px; }

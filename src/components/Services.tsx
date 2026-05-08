@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Eye, Contact, Glasses, Activity } from 'lucide-react';
 
 const services = [
@@ -8,6 +8,8 @@ const services = [
     tagline: 'Comprehensive & Thorough',
     body: 'Full ocular health assessments tailored to your age, lifestyle, and history. We examine beyond visual acuity to ensure complete eye wellness.',
     detail: ['Retinal imaging', 'Pressure checks', 'Binocular vision assessment', 'Colour vision testing'],
+    image: 'https://images.pexels.com/photos/5752310/pexels-photo-5752310.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    imageAlt: 'Optometrist conducting comprehensive eye exam',
   },
   {
     icon: Contact,
@@ -15,6 +17,8 @@ const services = [
     tagline: 'Precision Fit, Total Comfort',
     body: 'Expert fitting across all lens types, from daily and monthly to toric and multifocal, with follow-up care to ensure lasting comfort.',
     detail: ['Corneal mapping', 'Trial lens assessment', 'Dry eye evaluation', 'Wear schedule guidance'],
+    image: 'https://images.pexels.com/photos/5765827/pexels-photo-5765827.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    imageAlt: 'Precision contact lens fitting appointment',
   },
   {
     icon: Glasses,
@@ -22,6 +26,8 @@ const services = [
     tagline: 'Clarity, Redefined',
     body: 'Personalised prescriptions with expert guidance on corrective options, from eyewear to co-managed refractive procedures.',
     detail: ['Refraction testing', 'Myopia management', 'Prescription eyewear', 'Surgical co-management'],
+    image: 'https://i.postimg.cc/YS2CZ93z/a2d188.jpg',
+    imageAlt: 'Optician assisting patient with prescription eyewear selection',
   },
   {
     icon: Activity,
@@ -29,12 +35,144 @@ const services = [
     tagline: 'Proactive & Preventive',
     body: 'Ongoing monitoring programmes for those with elevated risk factors, ensuring early detection and peace of mind.',
     detail: ['Glaucoma screening', 'Macular health tracking', 'Diabetic eye review', 'Annual recall system'],
+    image: 'https://i.postimg.cc/qv5FVDX0/Best-Eye-Hospital-in-Trivandrum-1.jpg',
+    imageAlt: 'Advanced eye health monitoring equipment',
   },
 ];
 
+type Service = typeof services[0];
+
+function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt, reverse, index }: Service & { reverse: boolean; index: number }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.querySelectorAll('.slide-left, .slide-right').forEach(n => n.classList.add('visible'));
+          observer.disconnect();
+        }
+      }),
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={rowRef}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: 56,
+        alignItems: 'center',
+        padding: '64px 0',
+        borderBottom: index < services.length - 1 ? '1px solid rgba(122,140,110,0.12)' : 'none',
+      }}
+    >
+      {/* Text */}
+      <div
+        className={reverse ? 'slide-right' : 'slide-left'}
+        style={{ order: reverse ? 2 : 1 }}
+      >
+        <div style={{
+          fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
+          letterSpacing: '0.12em', textTransform: 'uppercase',
+          color: '#7a8c6e', marginBottom: 14,
+        }}>
+          {tagline}
+        </div>
+
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18,
+        }}>
+          <div style={{
+            width: 44, height: 44, borderRadius: 4, flexShrink: 0,
+            background: 'rgba(122,140,110,0.12)',
+            border: '1px solid rgba(122,140,110,0.22)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Icon size={20} color="#7a8c6e" strokeWidth={1.5} />
+          </div>
+          <h3 style={{
+            fontFamily: 'Cormorant Garamond, serif',
+            fontSize: 'clamp(26px, 3vw, 34px)',
+            fontWeight: 500, color: '#2c2c2c', lineHeight: 1.15,
+          }}>
+            {title}
+          </h3>
+        </div>
+
+        <p style={{
+          fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+          color: '#3a3a3a', lineHeight: 1.72, marginBottom: 24,
+        }}>
+          {body}
+        </p>
+
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 9 }}>
+          {detail.map((item, j) => (
+            <li key={j} style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 400,
+              color: '#3a3a3a',
+            }}>
+              <div style={{
+                width: 4, height: 4, borderRadius: '50%', flexShrink: 0,
+                background: '#b8965a',
+              }} />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Image */}
+      <div
+        className={reverse ? 'slide-left' : 'slide-right'}
+        style={{ order: reverse ? 1 : 2 }}
+      >
+        <div style={{
+          borderRadius: 4,
+          overflow: 'hidden',
+          position: 'relative',
+          aspectRatio: '4/3',
+          boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
+        }}>
+          <img
+            src={image}
+            alt={imageAlt}
+            loading="lazy"
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              transition: 'transform 0.6s ease',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
+          />
+          <div style={{
+            position: 'absolute', top: 0, right: 0,
+            width: 48, height: 3,
+            background: 'linear-gradient(270deg, #7a8c6e, transparent)',
+          }} />
+          <div style={{
+            position: 'absolute', top: 0, right: 0,
+            width: 3, height: 48,
+            background: 'linear-gradient(180deg, #7a8c6e, transparent)',
+          }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
   const ref = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,13 +206,13 @@ export default function Services() {
       <div style={{
         position: 'absolute', bottom: '5%', left: '3%', width: 380, height: 380,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(122,140,110,0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(122,140,110,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1060, margin: '0 auto' }}>
         {/* Header */}
-        <div className="fade-in delay-1" style={{ textAlign: 'center', marginBottom: 72 }}>
+        <div className="fade-in delay-1" style={{ textAlign: 'center', marginBottom: 20 }}>
           <div style={{
             display: 'inline-block', marginBottom: 18,
             fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
@@ -84,134 +222,38 @@ export default function Services() {
           </div>
           <h2 className="shiny-text" style={{
             fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 'clamp(34px, 5vw, 52px)',
-            fontWeight: 300, lineHeight: 1.15,
+            fontSize: 'clamp(34px, 5vw, 54px)',
+            fontWeight: 400, lineHeight: 1.12,
             marginBottom: 18,
           }}>
             Services Designed<br />
-            <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Around You</em>
+            <em style={{ fontStyle: 'italic', fontWeight: 300 }}>Around You</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
-            color: '#4a4a4a', maxWidth: 440, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+            color: '#3a3a3a', maxWidth: 440, margin: '0 auto', lineHeight: 1.68,
           }}>
             From routine exams to specialised monitoring, every service delivered with precision and care.
           </p>
         </div>
 
-        {/* Service cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: 24,
-          marginBottom: 64,
-        }}>
-          {services.map(({ icon: Icon, title, tagline, body, detail }, i) => (
-            <div
-              key={i}
-              className={`fade-in delay-${i + 2}`}
-              onClick={scrollToContact}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: hovered === i
-                  ? 'linear-gradient(160deg, #2c2c2c 0%, #3d3530 100%)'
-                  : '#faf8f4',
-                border: `1px solid ${hovered === i ? 'transparent' : 'rgba(184,150,90,0.15)'}`,
-                borderRadius: 4,
-                padding: '36px 30px',
-                cursor: 'pointer',
-                transition: 'background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease',
-                transform: hovered === i ? 'translateY(-6px)' : 'translateY(0)',
-                boxShadow: hovered === i ? '0 24px 64px rgba(0,0,0,0.14)' : '0 2px 12px rgba(0,0,0,0.04)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Top accent bar */}
-              <div style={{
-                position: 'absolute', top: 0, left: 0, right: 0, height: 2,
-                background: hovered === i
-                  ? 'linear-gradient(90deg, #b8965a, #d4b07a)'
-                  : 'linear-gradient(90deg, transparent, rgba(184,150,90,0.3), transparent)',
-                transition: 'background 0.4s',
-              }} />
-
-              <div style={{
-                width: 50, height: 50, borderRadius: 4, marginBottom: 24,
-                background: hovered === i
-                  ? 'rgba(184,150,90,0.2)'
-                  : 'linear-gradient(135deg, rgba(184,150,90,0.1), rgba(184,150,90,0.04))',
-                border: `1px solid ${hovered === i ? 'rgba(184,150,90,0.45)' : 'rgba(184,150,90,0.2)'}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'background 0.4s, border-color 0.4s',
-              }}>
-                <Icon size={21} color={hovered === i ? '#d4b07a' : '#b8965a'} strokeWidth={1.5} />
-              </div>
-
-              <div style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 10, fontWeight: 500,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: hovered === i ? 'rgba(212,176,122,0.8)' : '#7a8c6e',
-                marginBottom: 8, transition: 'color 0.4s',
-              }}>
-                {tagline}
-              </div>
-
-              <h3 style={{
-                fontFamily: 'Cormorant Garamond, serif', fontSize: 26, fontWeight: 500,
-                color: hovered === i ? '#f5f0e8' : '#2c2c2c',
-                marginBottom: 14, lineHeight: 1.15, transition: 'color 0.4s',
-              }}>
-                {title}
-              </h3>
-
-              <p style={{
-                fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-                color: hovered === i ? 'rgba(245,240,232,0.85)' : '#4a4a4a',
-                lineHeight: 1.65, marginBottom: 24, transition: 'color 0.4s',
-              }}>
-                {body}
-              </p>
-
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {detail.map((item, j) => (
-                  <li key={j} style={{
-                    display: 'flex', alignItems: 'center', gap: 9,
-                    fontFamily: 'Inter, sans-serif', fontSize: 12, fontWeight: 400,
-                    color: hovered === i ? 'rgba(245,240,232,0.7)' : '#5a5a5a',
-                    marginBottom: j < detail.length - 1 ? 7 : 0,
-                    transition: 'color 0.4s',
-                  }}>
-                    <div style={{
-                      width: 3, height: 3, borderRadius: '50%', flexShrink: 0,
-                      background: hovered === i ? '#d4b07a' : '#b8965a',
-                      transition: 'background 0.4s',
-                    }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Service rows */}
+        <div>
+          {services.map((service, i) => (
+            <ServiceRow key={i} {...service} reverse={i % 2 !== 0} index={i} />
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="fade-in delay-6" style={{ textAlign: 'center' }}>
-          <p style={{
-            fontFamily: 'Cormorant Garamond, serif', fontSize: 20, fontWeight: 300,
-            color: '#4a4a4a', marginBottom: 24, lineHeight: 1.5,
-          }}>
-            Ready to prioritise your eye health?
-          </p>
+        <div className="fade-in delay-2" style={{ textAlign: 'center', paddingTop: 48 }}>
           <button
             onClick={scrollToContact}
             style={{
-              padding: '14px 40px',
+              padding: '16px 48px',
               background: 'linear-gradient(135deg, #b8965a, #c9a96e)',
               color: '#faf8f4', border: 'none', borderRadius: 2, cursor: 'pointer',
               fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 500,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
+              letterSpacing: '0.1em', textTransform: 'uppercase',
               boxShadow: '0 8px 28px rgba(184,150,90,0.28)',
               transition: 'transform 0.25s, box-shadow 0.25s',
             }}
