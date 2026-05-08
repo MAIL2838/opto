@@ -8,8 +8,8 @@ const services = [
     tagline: 'Comprehensive & Thorough',
     body: 'Full ocular health assessments tailored to your age, lifestyle, and history. We examine beyond visual acuity to ensure complete eye wellness.',
     detail: ['Retinal imaging', 'Pressure checks', 'Binocular vision assessment', 'Colour vision testing'],
-    image: 'https://images.pexels.com/photos/5765827/pexels-photo-5765827.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
-    imageAlt: 'Eye exam in progress',
+    image: 'https://images.pexels.com/photos/5752310/pexels-photo-5752310.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    imageAlt: 'Optometrist conducting comprehensive eye exam',
   },
   {
     icon: Contact,
@@ -17,8 +17,8 @@ const services = [
     tagline: 'Precision Fit, Total Comfort',
     body: 'Expert fitting across all lens types, from daily and monthly to toric and multifocal, with follow-up care to ensure lasting comfort.',
     detail: ['Corneal mapping', 'Trial lens assessment', 'Dry eye evaluation', 'Wear schedule guidance'],
-    image: 'https://images.pexels.com/photos/5765874/pexels-photo-5765874.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
-    imageAlt: 'Contact lens fitting',
+    image: 'https://images.pexels.com/photos/5765827/pexels-photo-5765827.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    imageAlt: 'Precision contact lens fitting appointment',
   },
   {
     icon: Glasses,
@@ -26,8 +26,8 @@ const services = [
     tagline: 'Clarity, Redefined',
     body: 'Personalised prescriptions with expert guidance on corrective options, from eyewear to co-managed refractive procedures.',
     detail: ['Refraction testing', 'Myopia management', 'Prescription eyewear', 'Surgical co-management'],
-    image: 'https://images.pexels.com/photos/5752310/pexels-photo-5752310.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
-    imageAlt: 'Optician selecting glasses frames',
+    image: 'https://images.pexels.com/photos/5765874/pexels-photo-5765874.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    imageAlt: 'Optician assisting patient with prescription eyewear selection',
   },
   {
     icon: Activity,
@@ -36,7 +36,7 @@ const services = [
     body: 'Ongoing monitoring programmes for those with elevated risk factors, ensuring early detection and peace of mind.',
     detail: ['Glaucoma screening', 'Macular health tracking', 'Diabetic eye review', 'Annual recall system'],
     image: 'https://images.pexels.com/photos/5752309/pexels-photo-5752309.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
-    imageAlt: 'Eye health monitoring device',
+    imageAlt: 'Advanced eye health monitoring equipment',
   },
 ];
 
