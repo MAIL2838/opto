@@ -118,8 +118,8 @@ export default function SocialProof() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Real Results</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
-            color: '#4a4a4a', maxWidth: 460, margin: '0 auto', lineHeight: 1.65,
+            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+            color: '#3a3a3a', maxWidth: 460, margin: '0 auto', lineHeight: 1.7,
           }}>
             Every patient who walks through our doors has a unique story. Here is what changes when vision care is done right.
           </p>
@@ -179,7 +179,7 @@ export default function SocialProof() {
                 </div>
                 <p style={{
                   fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-                  color: '#4a4a4a', lineHeight: 1.6,
+                  color: '#3a3a3a', lineHeight: 1.7,
                 }}>
                   {before}
                 </p>

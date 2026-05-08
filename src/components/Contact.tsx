@@ -99,7 +99,7 @@ export default function Contact() {
           </h2>
           <p style={{
             fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 400,
-            color: 'rgba(245,240,232,0.75)', maxWidth: 420, margin: '0 auto', lineHeight: 1.65,
+            color: 'rgba(245,240,232,0.92)', maxWidth: 420, margin: '0 auto', lineHeight: 1.65,
           }}>
             We will be in touch within one business day to confirm your appointment.
           </p>
@@ -194,7 +194,7 @@ export default function Contact() {
                 </h3>
                 <p style={{
                   fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-                  color: 'rgba(245,240,232,0.75)', lineHeight: 1.6,
+                  color: 'rgba(245,240,232,0.92)', lineHeight: 1.6,
                 }}>
                   Thank you for reaching out. A member of our team will confirm your appointment within one business day.
                 </p>

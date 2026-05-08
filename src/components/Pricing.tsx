@@ -59,7 +59,7 @@ export default function Pricing() {
             <em style={{ fontStyle: 'italic', fontWeight: 400 }}>Care, Clearly Priced</em>
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
             color: '#4a4a4a', maxWidth: 520, margin: '0 auto', lineHeight: 1.65,
           }}>
             We believe in straightforward pricing with no hidden costs. Your consultation determines exactly what you need, and we discuss all fees before proceeding.
@@ -108,7 +108,7 @@ export default function Pricing() {
             </h3>
             <p style={{
               fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-              color: '#4a4a4a', lineHeight: 1.65, marginBottom: 20,
+              color: '#3a3a3a', lineHeight: 1.7, marginBottom: 20,
             }}>
               Every visit begins with a consultation. This allows us to understand your needs fully before recommending any services or treatments.
             </p>
@@ -170,7 +170,7 @@ export default function Pricing() {
             </h3>
             <p style={{
               fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-              color: '#4a4a4a', lineHeight: 1.65, marginBottom: 20,
+              color: '#3a3a3a', lineHeight: 1.7, marginBottom: 20,
             }}>
               Your consultation is the foundation of your care. We take the time to listen, examine, and explain before any decisions are made.
             </p>
