@@ -27,7 +27,7 @@ const features = [
     icon: TreePine,
     title: 'Long-Term Eye Health',
     body: 'We build an ongoing understanding of your ocular history, supporting prevention and continuity of care over time.',
-    image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    image: 'https://i.postimg.cc/d14tJK5g/eye-health-exercises-daily-routine.jpg',
     imageAlt: 'Doctor reviewing longitudinal patient eye health data',
   },
   {
