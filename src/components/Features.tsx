@@ -6,7 +6,7 @@ const features = [
     icon: Microscope,
     title: 'Advanced Eye Exams',
     body: 'Thorough, comprehensive examinations that go far beyond standard vision testing, covering retinal health, intraocular pressure, and more.',
-    image: 'https://images.pexels.com/photos/5765828/pexels-photo-5765828.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    image: 'https://i.postimg.cc/TwHC8Kv4/images-(2).jpg',
     imageAlt: 'Optometrist performing slit-lamp examination',
   },
   {
