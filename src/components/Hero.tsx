@@ -51,7 +51,7 @@ export default function Hero() {
             objectFit: 'cover',
           }}
         >
-          <source src="https://videos.pexels.com/video-files/5995137/5995137-sd_640_360_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/5995556/5995556-sd_640_360_30fps.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -59,9 +59,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute', inset: 0,
         background: `
-          radial-gradient(ellipse 80% 55% at 50% 0%, rgba(245,240,232,0.55) 0%, transparent 70%),
-          radial-gradient(ellipse 100% 70% at 50% 100%, rgba(237,231,217,0.40) 0%, transparent 55%),
-          linear-gradient(175deg, rgba(245,240,232,0.35) 0%, rgba(250,248,244,0.25) 40%, rgba(237,231,217,0.30) 100%)
+          radial-gradient(ellipse 80% 55% at 50% 0%, rgba(245,240,232,0.82) 0%, transparent 70%),
+          radial-gradient(ellipse 100% 70% at 50% 100%, rgba(237,231,217,0.65) 0%, transparent 55%),
+          linear-gradient(175deg, rgba(245,240,232,0.60) 0%, rgba(250,248,244,0.50) 40%, rgba(237,231,217,0.55) 100%)
         `,
         pointerEvents: 'none',
         zIndex: 1,
