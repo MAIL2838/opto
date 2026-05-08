@@ -35,7 +35,7 @@ const services = [
     tagline: 'Proactive & Preventive',
     body: 'Ongoing monitoring programmes for those with elevated risk factors, ensuring early detection and peace of mind.',
     detail: ['Glaucoma screening', 'Macular health tracking', 'Diabetic eye review', 'Annual recall system'],
-    image: 'https://images.pexels.com/photos/5752309/pexels-photo-5752309.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    image: 'https://i.postimg.cc/qv5FVDX0/Best-Eye-Hospital-in-Trivandrum-1.jpg',
     imageAlt: 'Advanced eye health monitoring equipment',
   },
 ];
