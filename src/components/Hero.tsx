@@ -51,7 +51,7 @@ export default function Hero() {
             objectFit: 'cover',
           }}
         >
-          <source src="https://videos.pexels.com/video-files/5765209/5765209-sd_640_360_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/5995137/5995137-sd_640_360_30fps.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -190,10 +190,6 @@ export default function Hero() {
         .hero-visible {
           opacity: 1 !important;
           transform: translateY(0) !important;
-        }
-        @keyframes heroVideoZoom {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.06); }
         }
         @keyframes ringPulse {
           0%, 100% { opacity: 0.55; transform: scale(1); }
