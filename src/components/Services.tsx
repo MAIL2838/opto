@@ -26,7 +26,7 @@ const services = [
     tagline: 'Clarity, Redefined',
     body: 'Personalised prescriptions with expert guidance on corrective options, from eyewear to co-managed refractive procedures.',
     detail: ['Refraction testing', 'Myopia management', 'Prescription eyewear', 'Surgical co-management'],
-    image: 'https://images.pexels.com/photos/5765874/pexels-photo-5765874.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    image: 'https://i.postimg.cc/YS2CZ93z/a2d188.jpg',
     imageAlt: 'Optician assisting patient with prescription eyewear selection',
   },
   {
