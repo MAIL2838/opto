@@ -48,15 +48,12 @@ export default function Hero() {
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
             objectFit: 'cover',
-            opacity: 0.18,
+            opacity: 0.22,
             animation: 'heroVideoZoom 28s ease-in-out infinite alternate',
           }}
         >
           <source src="https://videos.pexels.com/video-files/5765209/5765209-uhd_2560_1440_25fps.mp4" type="video/mp4" />
         </video>
-
-        {/* Canvas bokeh overlay */}
-        <HeroCanvas />
       </div>
 
       {/* Gradient overlay for legibility */}
@@ -95,20 +92,6 @@ export default function Hero() {
       }} />
 
       <div style={{ maxWidth: 820, width: '100%', textAlign: 'center', position: 'relative', zIndex: 3 }}>
-        {/* Eyebrow */}
-        <div
-          className="hero-fade"
-          style={{
-            display: 'inline-block', marginBottom: 20,
-            fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-            letterSpacing: '0.18em', textTransform: 'uppercase', color: '#b8965a',
-            opacity: 0, transform: 'translateY(20px)',
-            transition: 'opacity 0.7s ease, transform 0.7s ease',
-          }}
-        >
-          Premium Optometry · London
-        </div>
-
         {/* Headline */}
         <h1
           className="hero-fade shiny-text"
@@ -223,117 +206,5 @@ export default function Hero() {
         }
       `}</style>
     </section>
-  );
-}
-
-function HeroCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animId: number;
-    let t = 0;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    type Particle = { x: number; y: number; r: number; vx: number; vy: number; opacity: number; phase: number };
-    const particles: Particle[] = [];
-    for (let i = 0; i < 38; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: 4 + Math.random() * 24,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.14,
-        opacity: 0.04 + Math.random() * 0.09,
-        phase: Math.random() * Math.PI * 2,
-      });
-    }
-
-    const rings = [
-      { cx: 0.75, cy: 0.28, maxR: 300, speed: 0.0035, phase: 0 },
-      { cx: 0.18, cy: 0.72, maxR: 220, speed: 0.003, phase: Math.PI },
-    ];
-
-    const draw = () => {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-
-      const grad = ctx.createRadialGradient(w * 0.5, h * 0.38, 0, w * 0.5, h * 0.38, w * 0.75);
-      grad.addColorStop(0, 'rgba(212,176,122,0.13)');
-      grad.addColorStop(0.5, 'rgba(184,150,90,0.05)');
-      grad.addColorStop(1, 'rgba(237,231,217,0.03)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-
-      rings.forEach(ring => {
-        for (let i = 0; i < 5; i++) {
-          const pct = ((t * ring.speed + ring.phase / (Math.PI * 2) + i / 5) % 1);
-          const r = pct * ring.maxR;
-          const alpha = (1 - pct) * 0.07;
-          ctx.beginPath();
-          ctx.arc(w * ring.cx, h * ring.cy, r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(184,150,90,${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      });
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < -p.r) p.x = w + p.r;
-        if (p.x > w + p.r) p.x = -p.r;
-        if (p.y < -p.r) p.y = h + p.r;
-        if (p.y > h + p.r) p.y = -p.r;
-
-        const pulse = p.opacity * (0.65 + 0.35 * Math.sin(t * 0.025 + p.phase));
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-        g.addColorStop(0, `rgba(184,150,90,${pulse})`);
-        g.addColorStop(1, 'rgba(184,150,90,0)');
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = g;
-        ctx.fill();
-      });
-
-      const scanY = h * (0.3 + 0.38 * ((Math.sin(t * 0.007) + 1) / 2));
-      const scanGrad = ctx.createLinearGradient(0, scanY - 8, 0, scanY + 8);
-      scanGrad.addColorStop(0, 'rgba(184,150,90,0)');
-      scanGrad.addColorStop(0.5, 'rgba(184,150,90,0.035)');
-      scanGrad.addColorStop(1, 'rgba(184,150,90,0)');
-      ctx.fillStyle = scanGrad;
-      ctx.fillRect(0, scanY - 8, w, 16);
-
-      t++;
-      animId = requestAnimationFrame(draw);
-    };
-
-    draw();
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'absolute', inset: 0,
-        width: '100%', height: '100%',
-        zIndex: 1,
-      }}
-    />
   );
 }
