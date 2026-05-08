@@ -13,7 +13,7 @@ const features = [
     icon: Cpu,
     title: 'Precision Diagnostics',
     body: 'State-of-the-art imaging and diagnostic tools deliver detailed insights, enabling early detection and accurate clinical decisions.',
-    image: 'https://images.pexels.com/photos/5765826/pexels-photo-5765826.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
+    image: 'https://i.postimg.cc/kXj8f0qJ/medium-shot-woman-getting-her-eyes-checked-23-2150758537.avif',
     imageAlt: 'Retinal imaging diagnostic equipment close-up',
   },
   {
