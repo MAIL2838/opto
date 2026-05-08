@@ -44,15 +44,14 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="auto"
           style={{
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
             objectFit: 'cover',
-            opacity: 0.55,
-            animation: 'heroVideoZoom 28s ease-in-out infinite alternate',
           }}
         >
-          <source src="https://videos.pexels.com/video-files/5765209/5765209-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/5765209/5765209-sd_640_360_25fps.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -60,9 +59,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute', inset: 0,
         background: `
-          radial-gradient(ellipse 80% 55% at 50% 0%, rgba(245,240,232,0.72) 0%, transparent 70%),
-          radial-gradient(ellipse 100% 70% at 50% 100%, rgba(237,231,217,0.55) 0%, transparent 55%),
-          linear-gradient(175deg, rgba(245,240,232,0.55) 0%, rgba(250,248,244,0.40) 40%, rgba(237,231,217,0.50) 100%)
+          radial-gradient(ellipse 80% 55% at 50% 0%, rgba(245,240,232,0.55) 0%, transparent 70%),
+          radial-gradient(ellipse 100% 70% at 50% 100%, rgba(237,231,217,0.40) 0%, transparent 55%),
+          linear-gradient(175deg, rgba(245,240,232,0.35) 0%, rgba(250,248,244,0.25) 40%, rgba(237,231,217,0.30) 100%)
         `,
         pointerEvents: 'none',
         zIndex: 1,
