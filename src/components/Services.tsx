@@ -42,11 +42,11 @@ const services = [
 
 type Service = typeof services[0];
 
-function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt, reverse, index }: Service & { reverse: boolean; index: number }) {
-  const rowRef = useRef<HTMLDivElement>(null);
+function FeaturedService({ icon: Icon, title, tagline, body, detail, image, imageAlt }: Service) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = rowRef.current;
+    const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -55,7 +55,7 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
           observer.disconnect();
         }
       }),
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -63,56 +63,48 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
 
   return (
     <div
-      ref={rowRef}
+      ref={ref}
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: 56,
+        display: 'flex',
+        gap: 64,
         alignItems: 'center',
-        padding: '64px 0',
-        borderBottom: index < services.length - 1 ? '1px solid rgba(122,140,110,0.12)' : 'none',
+        padding: '72px 0 56px',
       }}
     >
-      {/* Text */}
-      <div
-        className={reverse ? 'slide-right' : 'slide-left'}
-        style={{ order: reverse ? 2 : 1 }}
-      >
+      {/* Text — 35% */}
+      <div className="slide-left" style={{ flex: '0 0 35%', maxWidth: 380 }}>
         <div style={{
           fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
           letterSpacing: '0.12em', textTransform: 'uppercase',
-          color: '#7a8c6e', marginBottom: 14,
+          color: '#7a8c6e', marginBottom: 16,
         }}>
           {tagline}
         </div>
-
         <div style={{
-          display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18,
+          display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20,
         }}>
           <div style={{
-            width: 44, height: 44, borderRadius: 4, flexShrink: 0,
+            width: 52, height: 52, borderRadius: 4, flexShrink: 0,
             background: 'rgba(122,140,110,0.12)',
             border: '1px solid rgba(122,140,110,0.22)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <Icon size={20} color="#7a8c6e" strokeWidth={1.5} />
+            <Icon size={22} color="#7a8c6e" strokeWidth={1.5} />
           </div>
           <h3 style={{
             fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 'clamp(26px, 3vw, 34px)',
+            fontSize: 'clamp(30px, 3.5vw, 40px)',
             fontWeight: 500, color: '#2c2c2c', lineHeight: 1.15,
           }}>
             {title}
           </h3>
         </div>
-
         <p style={{
           fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
           color: '#3a3a3a', lineHeight: 1.72, marginBottom: 24,
         }}>
           {body}
         </p>
-
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 9 }}>
           {detail.map((item, j) => (
             <li key={j} style={{
@@ -130,16 +122,13 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
         </ul>
       </div>
 
-      {/* Image */}
-      <div
-        className={reverse ? 'slide-left' : 'slide-right'}
-        style={{ order: reverse ? 1 : 2 }}
-      >
+      {/* Image — 65% */}
+      <div className="slide-right" style={{ flex: '1 1 65%' }}>
         <div style={{
           borderRadius: 4,
           overflow: 'hidden',
           position: 'relative',
-          aspectRatio: '4/3',
+          aspectRatio: '16/10',
           boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
         }}>
           <img
@@ -152,7 +141,7 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
               display: 'block',
               transition: 'transform 0.6s ease',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.03)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
           />
           <div style={{
@@ -163,6 +152,134 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
           <div style={{
             position: 'absolute', top: 0, right: 0,
             width: 3, height: 48,
+            background: 'linear-gradient(180deg, #7a8c6e, transparent)',
+          }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompactService({ icon: Icon, title, tagline, body, detail, image, imageAlt, index }: Service & { index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.querySelectorAll('.slide-left, .slide-right').forEach(n => n.classList.add('visible'));
+          observer.disconnect();
+        }
+      }),
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const isEven = index % 2 === 0;
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        display: 'flex',
+        gap: 44,
+        alignItems: 'center',
+        padding: '44px 0',
+        borderBottom: index < services.length - 1 ? '1px solid rgba(122,140,110,0.1)' : 'none',
+        flexDirection: isEven ? 'row' : 'row-reverse',
+      }}
+    >
+      {/* Text — 55% */}
+      <div
+        className={isEven ? 'slide-left' : 'slide-right'}
+        style={{ flex: '0 0 55%', maxWidth: 520 }}
+      >
+        <div style={{
+          fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
+          letterSpacing: '0.12em', textTransform: 'uppercase',
+          color: '#7a8c6e', marginBottom: 12,
+        }}>
+          {tagline}
+        </div>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14,
+        }}>
+          <div style={{
+            width: 38, height: 38, borderRadius: 4, flexShrink: 0,
+            background: 'rgba(122,140,110,0.12)',
+            border: '1px solid rgba(122,140,110,0.22)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Icon size={17} color="#7a8c6e" strokeWidth={1.5} />
+          </div>
+          <h3 style={{
+            fontFamily: 'Cormorant Garamond, serif',
+            fontSize: 'clamp(24px, 2.5vw, 30px)',
+            fontWeight: 500, color: '#2c2c2c', lineHeight: 1.15,
+          }}>
+            {title}
+          </h3>
+        </div>
+        <p style={{
+          fontFamily: 'Inter, sans-serif', fontSize: 16, fontWeight: 400,
+          color: '#3a3a3a', lineHeight: 1.68, marginBottom: 18,
+        }}>
+          {body}
+        </p>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
+          {detail.map((item, j) => (
+            <li key={j} style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
+              color: '#3a3a3a',
+            }}>
+              <div style={{
+                width: 4, height: 4, borderRadius: '50%', flexShrink: 0,
+                background: '#b8965a',
+              }} />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Image — 45% */}
+      <div
+        className={isEven ? 'slide-right' : 'slide-left'}
+        style={{ flex: '1 1 45%' }}
+      >
+        <div style={{
+          borderRadius: 4,
+          overflow: 'hidden',
+          position: 'relative',
+          aspectRatio: '4/3',
+          boxShadow: '0 16px 48px rgba(0,0,0,0.08)',
+        }}>
+          <img
+            src={image}
+            alt={imageAlt}
+            loading="lazy"
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              transition: 'transform 0.6s ease',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.03)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
+          />
+          <div style={{
+            position: 'absolute', top: 0, right: 0,
+            width: 36, height: 3,
+            background: 'linear-gradient(270deg, #7a8c6e, transparent)',
+          }} />
+          <div style={{
+            position: 'absolute', top: 0, right: 0,
+            width: 3, height: 36,
             background: 'linear-gradient(180deg, #7a8c6e, transparent)',
           }} />
         </div>
@@ -237,12 +354,13 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Service rows */}
-        <div>
-          {services.map((service, i) => (
-            <ServiceRow key={i} {...service} reverse={i % 2 !== 0} index={i} />
-          ))}
-        </div>
+        {/* Featured service — large image, prominent text */}
+        <FeaturedService {...services[0]} />
+
+        {/* Supporting services — compact, varied layout */}
+        {services.slice(1).map((service, i) => (
+          <CompactService key={i} {...service} index={i} />
+        ))}
 
         {/* Bottom CTA */}
         <div className="fade-in delay-2" style={{ textAlign: 'center', paddingTop: 48 }}>
