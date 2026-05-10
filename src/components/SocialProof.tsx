@@ -45,13 +45,6 @@ const testimonials = [
   },
 ];
 
-const trustSignals = [
-  'Clinically rigorous, evidence-based approach',
-  'GMC-registered optometrists',
-  'Patient-first philosophy in every consultation',
-  'Transparent communication at every stage',
-];
-
 export default function SocialProof() {
   const ref = useRef<HTMLDivElement>(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -284,39 +277,6 @@ export default function SocialProof() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Trust signals */}
-        <div className="fade-in delay-6">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: 20,
-          }}>
-            {trustSignals.map((signal, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                  padding: '16px 20px',
-                  background: '#faf8f4',
-                  border: '1px solid rgba(184,150,90,0.12)',
-                  borderRadius: 4,
-                }}
-              >
-                <div style={{
-                  width: 6, height: 6, borderRadius: '50%',
-                  background: '#b8965a', flexShrink: 0,
-                }} />
-                <span style={{
-                  fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400,
-                  color: '#4a4a4a', lineHeight: 1.4,
-                }}>
-                  {signal}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </div>

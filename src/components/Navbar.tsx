@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Eye } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,14 +39,7 @@ export default function Navbar() {
     >
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-          <div style={{
-            width: 36, height: 36, borderRadius: '50%',
-            background: 'linear-gradient(135deg, #b8965a, #d4b07a)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <Eye size={18} color="#faf8f4" strokeWidth={1.8} />
-          </div>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 20, fontWeight: 500, color: '#2c2c2c', letterSpacing: '0.02em' }}>
             Lumière Eye
           </span>
