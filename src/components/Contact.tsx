@@ -41,11 +41,11 @@ export default function Contact() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%', padding: '13px 16px',
-    background: 'rgba(245,240,232,0.5)',
-    border: '1px solid rgba(184,150,90,0.2)',
+    background: '#ffffff',
+    border: '1px solid rgba(184,150,90,0.25)',
     borderRadius: 2, outline: 'none',
     fontFamily: 'Inter, sans-serif', fontSize: 14, fontWeight: 400,
-    color: '#2c2c2c',
+    color: '#1a1a1a',
     transition: 'border-color 0.25s, background 0.25s',
   };
 
@@ -169,7 +169,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Form + Map */}
           <div className="fade-in delay-3">
             {submitted ? (
               <div style={{
@@ -214,8 +214,8 @@ export default function Contact() {
                     name="name" value={form.name} onChange={handleChange}
                     required placeholder="Jane Smith"
                     style={inputStyle}
-                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = '#ffffff'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.25)'; e.target.style.background = '#ffffff'; }}
                   />
                 </div>
 
@@ -232,8 +232,8 @@ export default function Contact() {
                     name="email" type="email" value={form.email} onChange={handleChange}
                     required placeholder="jane@example.com"
                     style={inputStyle}
-                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = '#ffffff'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.25)'; e.target.style.background = '#ffffff'; }}
                   />
                 </div>
 
@@ -250,8 +250,8 @@ export default function Contact() {
                     name="phone" value={form.phone} onChange={handleChange}
                     placeholder="+44 7700 000000"
                     style={inputStyle}
-                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = '#ffffff'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.25)'; e.target.style.background = '#ffffff'; }}
                   />
                 </div>
 
@@ -268,8 +268,8 @@ export default function Contact() {
                     name="message" value={form.message} onChange={handleChange}
                     rows={4} placeholder="Any particular concerns or preferred appointment times..."
                     style={{ ...inputStyle, resize: 'vertical', minHeight: 110 }}
-                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = 'rgba(245,240,232,0.7)'; }}
-                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.2)'; e.target.style.background = 'rgba(245,240,232,0.5)'; }}
+                    onFocus={e => { e.target.style.borderColor = 'rgba(184,150,90,0.5)'; e.target.style.background = '#ffffff'; }}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(184,150,90,0.25)'; e.target.style.background = '#ffffff'; }}
                   />
                 </div>
 
@@ -311,6 +311,25 @@ export default function Contact() {
                 </p>
               </form>
             )}
+
+            {/* Map */}
+            <div style={{
+              marginTop: 32,
+              borderRadius: 8,
+              overflow: 'hidden',
+              border: '1px solid rgba(184,150,90,0.2)',
+            }}>
+              <iframe
+                title="Clinic Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.537903350686!2d-0.1484395!3d51.5194636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2f16f5c7e5%3A0x5a6e3e2e0e0e0e0e!2sHarley%20St%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                width="100%"
+                height="300"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </div>

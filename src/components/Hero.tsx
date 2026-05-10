@@ -51,7 +51,7 @@ export default function Hero() {
             objectFit: 'cover',
           }}
         >
-          <source src="https://videos.pexels.com/video-files/5995556/5995556-sd_640_360_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/5995556/5995556-hd_1920_1080_30fps.mp4" type="video/mp4" />
         </video>
       </div>
 
