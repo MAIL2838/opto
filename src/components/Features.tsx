@@ -6,7 +6,7 @@ const features = [
     icon: Microscope,
     title: 'Advanced Eye Exams',
     body: 'Thorough, comprehensive examinations that go far beyond standard vision testing, covering retinal health, intraocular pressure, and more.',
-    image: 'https://i.postimg.cc/TwHC8Kv4/images-(2).jpg',
+    image: 'https://i.postimg.cc/QCPJYtkq/Does-BC-MSP-Cover-Eye-Exams-hero-1-1024x672.jpg',
     imageAlt: 'Optometrist performing slit-lamp examination',
   },
   {
