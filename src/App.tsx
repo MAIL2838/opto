@@ -21,6 +21,11 @@ function App() {
         <Hero />
         <TrustStrip />
         <Features />
+        <div style={{
+          height: 80,
+          background: 'linear-gradient(180deg, #f5f0e8 0%, #ede7d9 50%, #ede7d9 100%)',
+          pointerEvents: 'none',
+        }} />
         <Services />
         <SocialProof />
         <Authority />

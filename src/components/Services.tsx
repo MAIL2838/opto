@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Eye, Contact, Glasses, Activity } from 'lucide-react';
 
 const services = [
@@ -42,28 +43,54 @@ const services = [
 
 type Service = typeof services[0];
 
-function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt, reverse, index }: Service & { reverse: boolean; index: number }) {
-  const rowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          el.querySelectorAll('.slide-left, .slide-right').forEach(n => n.classList.add('visible'));
-          observer.disconnect();
-        }
-      }),
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+function ParallaxImage({ src, alt, accentColor }: { src: string; alt: string; accentColor: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
 
   return (
-    <div
-      ref={rowRef}
+    <div ref={ref} style={{ position: 'relative', overflow: 'hidden', borderRadius: 4, aspectRatio: '4/3' }}>
+      <motion.div style={{ y }} className="parallax-img-wrapper">
+        <motion.img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{
+            width: '100%', height: 'calc(100% + 60px)',
+            objectFit: 'cover', display: 'block',
+            scale: 1,
+          }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+      </motion.div>
+      <div style={{
+        position: 'absolute', top: 0, right: 0,
+        width: 48, height: 3,
+        background: `linear-gradient(270deg, ${accentColor}, transparent)`,
+      }} />
+      <div style={{
+        position: 'absolute', top: 0, right: 0,
+        width: 3, height: 48,
+        background: `linear-gradient(180deg, ${accentColor}, transparent)`,
+      }} />
+    </div>
+  );
+}
+
+function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt, reverse, index }: Service & { reverse: boolean; index: number }) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.1 } },
+      }}
       style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -74,21 +101,36 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
       }}
     >
       {/* Text */}
-      <div
-        className={reverse ? 'slide-right' : 'slide-left'}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 32 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } },
+        }}
         style={{ order: reverse ? 2 : 1 }}
       >
-        <div style={{
-          fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-          letterSpacing: '0.12em', textTransform: 'uppercase',
-          color: '#7a8c6e', marginBottom: 14,
-        }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 14 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
+            letterSpacing: '0.12em', textTransform: 'uppercase',
+            color: '#7a8c6e', marginBottom: 14,
+          }}
+        >
           {tagline}
-        </div>
+        </motion.div>
 
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18,
-        }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 14 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18,
+          }}
+        >
           <div style={{
             width: 44, height: 44, borderRadius: 4, flexShrink: 0,
             background: 'rgba(122,140,110,0.12)',
@@ -104,16 +146,28 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
           }}>
             {title}
           </h3>
-        </div>
+        </motion.div>
 
-        <p style={{
-          fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
-          color: '#3a3a3a', lineHeight: 1.72, marginBottom: 24,
-        }}>
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 14 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+            color: '#3a3a3a', lineHeight: 1.72, marginBottom: 24,
+          }}
+        >
           {body}
-        </p>
+        </motion.p>
 
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 9 }}>
+        <motion.ul
+          variants={{
+            hidden: { opacity: 0, y: 14 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 9 }}
+        >
           {detail.map((item, j) => (
             <li key={j} style={{
               display: 'flex', alignItems: 'center', gap: 10,
@@ -127,66 +181,31 @@ function ServiceRow({ icon: Icon, title, tagline, body, detail, image, imageAlt,
               {item}
             </li>
           ))}
-        </ul>
-      </div>
+        </motion.ul>
+      </motion.div>
 
       {/* Image */}
-      <div
-        className={reverse ? 'slide-left' : 'slide-right'}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 32 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 } },
+        }}
         style={{ order: reverse ? 1 : 2 }}
       >
         <div style={{
           borderRadius: 4,
           overflow: 'hidden',
           position: 'relative',
-          aspectRatio: '4/3',
           boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
         }}>
-          <img
-            src={image}
-            alt={imageAlt}
-            loading="lazy"
-            style={{
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              transition: 'transform 0.6s ease',
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
-          />
-          <div style={{
-            position: 'absolute', top: 0, right: 0,
-            width: 48, height: 3,
-            background: 'linear-gradient(270deg, #7a8c6e, transparent)',
-          }} />
-          <div style={{
-            position: 'absolute', top: 0, right: 0,
-            width: 3, height: 48,
-            background: 'linear-gradient(180deg, #7a8c6e, transparent)',
-          }} />
+          <ParallaxImage src={image} alt={imageAlt} accentColor="#7a8c6e" />
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 export default function Services() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-        }
-      }),
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -195,7 +214,6 @@ export default function Services() {
   return (
     <section
       id="services"
-      ref={ref}
       style={{
         padding: '100px 32px',
         background: 'linear-gradient(170deg, #ede7d9 0%, #f5f0e8 50%, #faf8f4 100%)',
@@ -212,30 +230,58 @@ export default function Services() {
 
       <div style={{ maxWidth: 1060, margin: '0 auto' }}>
         {/* Header */}
-        <div className="fade-in delay-1" style={{ textAlign: 'center', marginBottom: 20 }}>
-          <div style={{
-            display: 'inline-block', marginBottom: 18,
-            fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-            letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7a8c6e',
-          }}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+          style={{ textAlign: 'center', marginBottom: 20 }}
+        >
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            style={{
+              display: 'inline-block', marginBottom: 18,
+              fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
+              letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7a8c6e',
+            }}
+          >
             What We Offer
-          </div>
-          <h2 className="shiny-text" style={{
-            fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 'clamp(34px, 5vw, 54px)',
-            fontWeight: 400, lineHeight: 1.12,
-            marginBottom: 18,
-          }}>
+          </motion.div>
+          <motion.h2
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            className="shiny-text"
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: 'clamp(34px, 5vw, 54px)',
+              fontWeight: 400, lineHeight: 1.12,
+              marginBottom: 18,
+            }}
+          >
             Services Designed<br />
             <em style={{ fontStyle: 'italic', fontWeight: 300 }}>Around You</em>
-          </h2>
-          <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
-            color: '#3a3a3a', maxWidth: 440, margin: '0 auto', lineHeight: 1.68,
-          }}>
+          </motion.h2>
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            style={{
+              fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+              color: '#3a3a3a', maxWidth: 440, margin: '0 auto', lineHeight: 1.68,
+            }}
+          >
             From routine exams to specialised monitoring, every service delivered with precision and care.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Service rows */}
         <div>
@@ -245,7 +291,13 @@ export default function Services() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="fade-in delay-2" style={{ textAlign: 'center', paddingTop: 48 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ textAlign: 'center', paddingTop: 48 }}
+        >
           <button
             onClick={scrollToContact}
             style={{
@@ -262,7 +314,7 @@ export default function Services() {
           >
             Book Consultation
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

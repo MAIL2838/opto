@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Microscope, Cpu, Smile, TreePine, Zap } from 'lucide-react';
 
 const features = [
@@ -41,28 +42,54 @@ const features = [
 
 type Feature = typeof features[0];
 
-function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }: Feature & { reverse: boolean; index: number }) {
-  const rowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          el.querySelectorAll('.slide-left, .slide-right').forEach(n => n.classList.add('visible'));
-          observer.disconnect();
-        }
-      }),
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-30, 30]);
 
   return (
-    <div
-      ref={rowRef}
+    <div ref={ref} style={{ position: 'relative', overflow: 'hidden', borderRadius: 4, aspectRatio: '4/3' }}>
+      <motion.div style={{ y }} className="parallax-img-wrapper">
+        <motion.img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{
+            width: '100%', height: 'calc(100% + 60px)',
+            objectFit: 'cover', display: 'block',
+            scale: 1,
+          }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+      </motion.div>
+      <div style={{
+        position: 'absolute', top: 0, left: 0,
+        width: 48, height: 3,
+        background: 'linear-gradient(90deg, #b8965a, transparent)',
+      }} />
+      <div style={{
+        position: 'absolute', top: 0, left: 0,
+        width: 3, height: 48,
+        background: 'linear-gradient(180deg, #b8965a, transparent)',
+      }} />
+    </div>
+  );
+}
+
+function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }: Feature & { reverse: boolean; index: number }) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.12 } },
+      }}
       style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -73,97 +100,82 @@ function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }
       }}
     >
       {/* Text block */}
-      <div
-        className={reverse ? 'slide-right' : 'slide-left'}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 32 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } },
+        }}
         style={{ order: reverse ? 2 : 1 }}
       >
-        <div style={{
-          width: 48, height: 48, borderRadius: 4,
-          background: 'linear-gradient(135deg, rgba(184,150,90,0.14), rgba(184,150,90,0.06))',
-          border: '1px solid rgba(184,150,90,0.22)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          marginBottom: 24,
-        }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            width: 48, height: 48, borderRadius: 4,
+            background: 'linear-gradient(135deg, rgba(184,150,90,0.14), rgba(184,150,90,0.06))',
+            border: '1px solid rgba(184,150,90,0.22)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            marginBottom: 24,
+          }}
+        >
           <Icon size={20} color="#b8965a" strokeWidth={1.5} />
-        </div>
-        <h3 style={{
-          fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(26px, 3vw, 34px)',
-          fontWeight: 500, color: '#2c2c2c',
-          lineHeight: 1.15, marginBottom: 16,
-        }}>
+        </motion.div>
+        <motion.h3
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            fontFamily: 'Cormorant Garamond, serif',
+            fontSize: 'clamp(26px, 3vw, 34px)',
+            fontWeight: 500, color: '#2c2c2c',
+            lineHeight: 1.15, marginBottom: 16,
+          }}
+        >
           {title}
-        </h3>
-        <p style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: 17, fontWeight: 400,
-          color: '#3a3a3a', lineHeight: 1.72,
-        }}>
+        </motion.h3>
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+          }}
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 17, fontWeight: 400,
+            color: '#3a3a3a', lineHeight: 1.72,
+          }}
+        >
           {body}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       {/* Image block */}
-      <div
-        className={reverse ? 'slide-left' : 'slide-right'}
-        style={{ order: reverse ? 1 : 2, position: 'relative' }}
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 32 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 } },
+        }}
+        style={{ order: reverse ? 1 : 2 }}
       >
         <div style={{
           borderRadius: 4,
           overflow: 'hidden',
           position: 'relative',
-          aspectRatio: '4/3',
           boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
         }}>
-          <img
-            src={image}
-            alt={imageAlt}
-            loading="lazy"
-            style={{
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              transition: 'transform 0.6s ease',
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
-          />
-          <div style={{
-            position: 'absolute', top: 0, left: 0,
-            width: 48, height: 3,
-            background: 'linear-gradient(90deg, #b8965a, transparent)',
-          }} />
-          <div style={{
-            position: 'absolute', top: 0, left: 0,
-            width: 3, height: 48,
-            background: 'linear-gradient(180deg, #b8965a, transparent)',
-          }} />
+          <ParallaxImage src={image} alt={imageAlt} />
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 export default function Features() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-        }
-      }),
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="features"
-      ref={ref}
       style={{
         padding: '100px 32px',
         background: 'linear-gradient(180deg, #faf8f4 0%, #f5f0e8 100%)',
@@ -179,30 +191,58 @@ export default function Features() {
 
       <div style={{ maxWidth: 1060, margin: '0 auto' }}>
         {/* Header */}
-        <div className="fade-in delay-1" style={{ textAlign: 'center', marginBottom: 20 }}>
-          <div style={{
-            display: 'inline-block', marginBottom: 18,
-            fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
-            letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b8965a',
-          }}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+          style={{ textAlign: 'center', marginBottom: 20 }}
+        >
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            style={{
+              display: 'inline-block', marginBottom: 18,
+              fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 500,
+              letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b8965a',
+            }}
+          >
             Why Choose Us
-          </div>
-          <h2 className="shiny-text" style={{
-            fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 'clamp(34px, 5vw, 54px)',
-            fontWeight: 400, lineHeight: 1.12,
-            marginBottom: 18,
-          }}>
+          </motion.div>
+          <motion.h2
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            className="shiny-text"
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: 'clamp(34px, 5vw, 54px)',
+              fontWeight: 400, lineHeight: 1.12,
+              marginBottom: 18,
+            }}
+          >
             Care Refined to<br />
             <em style={{ fontStyle: 'italic', fontWeight: 300 }}>Every Detail</em>
-          </h2>
-          <p style={{
-            fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
-            color: '#3a3a3a', maxWidth: 480, margin: '0 auto', lineHeight: 1.68,
-          }}>
+          </motion.h2>
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+            }}
+            style={{
+              fontFamily: 'Inter, sans-serif', fontSize: 17, fontWeight: 400,
+              color: '#3a3a3a', maxWidth: 480, margin: '0 auto', lineHeight: 1.68,
+            }}
+          >
             A practice built on precision, patience, and genuine commitment to the people we care for.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Feature rows */}
         <div>
