@@ -323,7 +323,7 @@ export default function Contact() {
                 title="Clinic Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.537903350686!2d-0.1484395!3d51.5194636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2f16f5c7e5%3A0x5a6e3e2e0e0e0e0e!2sHarley%20St%2C%20London!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
                 width="100%"
-                height="220"
+                height="300"
                 style={{ border: 0, display: 'block' }}
                 allowFullScreen
                 loading="lazy"
