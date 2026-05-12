@@ -35,11 +35,10 @@ export default function Hero() {
       {/* Video background */}
       <div style={{
         position: 'absolute',
-        top: 0, left: 0, right: 0, bottom: 0,
+        top: '-120px', left: '-32px', right: '-32px', bottom: '-80px',
         zIndex: 0,
         background: 'linear-gradient(175deg, #f5f0e8 0%, #faf8f4 40%, #f2ece0 70%, #ede7d9 100%)',
         overflow: 'hidden',
-        width: '100%', height: '100%',
       }}>
         <video
           ref={videoRef}
