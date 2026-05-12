@@ -34,9 +34,12 @@ export default function Hero() {
     >
       {/* Video background */}
       <div style={{
-        position: 'absolute', inset: 0, zIndex: 0,
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        zIndex: 0,
         background: 'linear-gradient(175deg, #f5f0e8 0%, #faf8f4 40%, #f2ece0 70%, #ede7d9 100%)',
         overflow: 'hidden',
+        width: '100%', height: '100%',
       }}>
         <video
           ref={videoRef}
@@ -46,9 +49,11 @@ export default function Hero() {
           playsInline
           preload="auto"
           style={{
-            position: 'absolute', inset: 0,
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
             width: '100%', height: '100%',
             objectFit: 'cover',
+            display: 'block',
           }}
         >
           <source src="https://videos.pexels.com/video-files/5995556/5995556-hd_1920_1080_30fps.mp4" type="video/mp4" />
