@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Microscope, Cpu, Smile, TreePine, Zap } from 'lucide-react';
+import { Microscope, Cpu, Smile, TreePine } from 'lucide-react';
 
 const features = [
   {
@@ -30,22 +30,110 @@ const features = [
     image: 'https://i.postimg.cc/d14tJK5g/eye-health-exercises-daily-routine.jpg',
     imageAlt: 'Doctor reviewing longitudinal patient eye health data',
   },
-  {
-    icon: Zap,
-    title: 'Modern Equipment',
-    body: 'Our clinic is equipped with leading-edge optical technology, ensuring assessments that are both fast and highly accurate.',
-    image: 'https://images.pexels.com/photos/5765830/pexels-photo-5765830.jpeg?auto=compress&cs=tinysrgb&w=900&q=80',
-    imageAlt: 'Modern optical coherence tomography scanner',
-  },
 ];
 
 type Feature = typeof features[0];
 
-function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }: Feature & { reverse: boolean; index: number }) {
-  const rowRef = useRef<HTMLDivElement>(null);
+function FeaturedRow({ icon: Icon, title, body, image, imageAlt }: Feature) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = rowRef.current;
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          el.querySelectorAll('.slide-left, .slide-right').forEach(n => n.classList.add('visible'));
+          observer.disconnect();
+        }
+      }),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        display: 'flex',
+        gap: 64,
+        alignItems: 'center',
+        padding: '72px 0 56px',
+      }}
+    >
+      {/* Text — 35% */}
+      <div className="slide-left" style={{ flex: '0 0 35%', maxWidth: 380 }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: 4,
+          background: 'linear-gradient(135deg, rgba(184,150,90,0.14), rgba(184,150,90,0.06))',
+          border: '1px solid rgba(184,150,90,0.22)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          marginBottom: 28,
+        }}>
+          <Icon size={24} color="#b8965a" strokeWidth={1.5} />
+        </div>
+        <h3 style={{
+          fontFamily: 'Cormorant Garamond, serif',
+          fontSize: 'clamp(30px, 3.5vw, 40px)',
+          fontWeight: 500, color: '#2c2c2c',
+          lineHeight: 1.15, marginBottom: 20,
+        }}>
+          {title}
+        </h3>
+        <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: 17, fontWeight: 400,
+          color: '#3a3a3a', lineHeight: 1.72,
+        }}>
+          {body}
+        </p>
+      </div>
+
+      {/* Image — 65% */}
+      <div className="slide-right" style={{ flex: '1 1 65%' }}>
+        <div style={{
+          borderRadius: 4,
+          overflow: 'hidden',
+          position: 'relative',
+          aspectRatio: '16/10',
+          boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
+        }}>
+          <img
+            src={image}
+            alt={imageAlt}
+            loading="lazy"
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              transition: 'transform 0.6s ease',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.03)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
+          />
+          <div style={{
+            position: 'absolute', top: 0, left: 0,
+            width: 48, height: 3,
+            background: 'linear-gradient(90deg, #b8965a, transparent)',
+          }} />
+          <div style={{
+            position: 'absolute', top: 0, left: 0,
+            width: 3, height: 48,
+            background: 'linear-gradient(180deg, #b8965a, transparent)',
+          }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompactRow({ icon: Icon, title, body, image, imageAlt, index }: Feature & { index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -60,60 +148,62 @@ function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }
     return () => observer.disconnect();
   }, []);
 
+  const isEven = index % 2 === 0;
+
   return (
     <div
-      ref={rowRef}
+      ref={ref}
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: 56,
+        display: 'flex',
+        gap: 44,
         alignItems: 'center',
-        padding: '64px 0',
-        borderBottom: index < features.length - 1 ? '1px solid rgba(184,150,90,0.1)' : 'none',
+        padding: '44px 0',
+        borderBottom: index < features.length - 1 ? '1px solid rgba(184,150,90,0.08)' : 'none',
+        flexDirection: isEven ? 'row' : 'row-reverse',
       }}
     >
-      {/* Text block */}
+      {/* Text — 55% */}
       <div
-        className={reverse ? 'slide-right' : 'slide-left'}
-        style={{ order: reverse ? 2 : 1 }}
+        className={isEven ? 'slide-left' : 'slide-right'}
+        style={{ flex: '0 0 55%', maxWidth: 520 }}
       >
         <div style={{
-          width: 48, height: 48, borderRadius: 4,
+          width: 40, height: 40, borderRadius: 4,
           background: 'linear-gradient(135deg, rgba(184,150,90,0.14), rgba(184,150,90,0.06))',
           border: '1px solid rgba(184,150,90,0.22)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          marginBottom: 24,
+          marginBottom: 18,
         }}>
-          <Icon size={20} color="#b8965a" strokeWidth={1.5} />
+          <Icon size={18} color="#b8965a" strokeWidth={1.5} />
         </div>
         <h3 style={{
           fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(26px, 3vw, 34px)',
+          fontSize: 'clamp(24px, 2.5vw, 30px)',
           fontWeight: 500, color: '#2c2c2c',
-          lineHeight: 1.15, marginBottom: 16,
+          lineHeight: 1.15, marginBottom: 12,
         }}>
           {title}
         </h3>
         <p style={{
           fontFamily: 'Inter, sans-serif',
-          fontSize: 17, fontWeight: 400,
-          color: '#3a3a3a', lineHeight: 1.72,
+          fontSize: 16, fontWeight: 400,
+          color: '#3a3a3a', lineHeight: 1.68,
         }}>
           {body}
         </p>
       </div>
 
-      {/* Image block */}
+      {/* Image — 45% */}
       <div
-        className={reverse ? 'slide-left' : 'slide-right'}
-        style={{ order: reverse ? 1 : 2, position: 'relative' }}
+        className={isEven ? 'slide-right' : 'slide-left'}
+        style={{ flex: '1 1 45%' }}
       >
         <div style={{
           borderRadius: 4,
           overflow: 'hidden',
           position: 'relative',
           aspectRatio: '4/3',
-          boxShadow: '0 24px 64px rgba(0,0,0,0.1)',
+          boxShadow: '0 16px 48px rgba(0,0,0,0.08)',
         }}>
           <img
             src={image}
@@ -125,17 +215,17 @@ function FeatureRow({ icon: Icon, title, body, image, imageAlt, reverse, index }
               display: 'block',
               transition: 'transform 0.6s ease',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.03)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }}
           />
           <div style={{
             position: 'absolute', top: 0, left: 0,
-            width: 48, height: 3,
+            width: 36, height: 3,
             background: 'linear-gradient(90deg, #b8965a, transparent)',
           }} />
           <div style={{
             position: 'absolute', top: 0, left: 0,
-            width: 3, height: 48,
+            width: 3, height: 36,
             background: 'linear-gradient(180deg, #b8965a, transparent)',
           }} />
         </div>
@@ -204,12 +294,13 @@ export default function Features() {
           </p>
         </div>
 
-        {/* Feature rows */}
-        <div>
-          {features.map((feature, i) => (
-            <FeatureRow key={i} {...feature} reverse={i % 2 !== 0} index={i} />
-          ))}
-        </div>
+        {/* Featured item — large image, prominent text */}
+        <FeaturedRow {...features[0]} />
+
+        {/* Supporting items — compact, varied layout */}
+        {features.slice(1).map((feature, i) => (
+          <CompactRow key={i} {...feature} index={i} />
+        ))}
       </div>
     </section>
   );

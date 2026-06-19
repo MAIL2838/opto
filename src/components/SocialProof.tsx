@@ -69,11 +69,6 @@ export default function SocialProof() {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section
       id="social-proof"
